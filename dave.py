@@ -1,29 +1,34 @@
-import tmx, pygame, pyganim
+# By Ryan Dela Rosa Salvador
+# Free Software
+# Copyleft 2015-2020
 
-class Items(pygame.sprite.Sprite):
+import tmx, pygame, pyganim
+from pygame.sprite import Sprite
+
+class Item(Sprite):
     def __init__(self, location, *groups):
-        super(Items, self).__init__(*groups)
+        Sprite.__init__(self, *groups)
         self.rect = pygame.rect.Rect(location, self.image.get_size())
 
     def update(self, dt, game):
         if self.rect.colliderect(game.player.rect):
             game.score = game.score + self.score
-            print game.score
+            print(game.score)
             self.kill()
     
-class Diamond(Items):
+class Diamond(Item):
     image = pygame.image.load('data/diamond.png')
     score = 100
 
-class Ruby(Items):
+class Ruby(Item):
     image = pygame.image.load('data/ruby.png')
     score = 150
 
-class Pearl(Items):
+class Pearl(Item):
     image = pygame.image.load('data/pearl.png')
     score = 50
 
-class Trophy(Items):
+class Trophy(Item):
     image = pygame.image.load('data/trophy000.png')
     imagesAndDurations = [('data/trophy%s.png' % str(num).rjust(3, '0'), 0.1) for num in range(5)]
     animTrophy = pyganim.PygAnimation(imagesAndDurations)
@@ -35,12 +40,12 @@ class Trophy(Items):
         if self.rect.colliderect(game.player.rect):
             self.animTrophy.stop()
             game.score = game.score + self.score
-            print 'Go thru the door!'
-            print game.score
+            print('Go thru the door!')
+            print(game.score)
             game.exit_door = True
             self.kill()
 
-class Player(pygame.sprite.Sprite):
+class Player(Sprite):
     right_jumping = pygame.image.load('data/dave_right_jump.png')
     left_jumping = pygame.transform.flip(right_jumping, True, False)
     animObjs = {}
@@ -54,10 +59,10 @@ class Player(pygame.sprite.Sprite):
     moveConductor = pyganim.PygConductor(animObjs)
 
     def __init__(self, location, *groups):
-        super(Player, self).__init__(*groups)
+        Sprite.__init__(self, *groups)
         self.image = pygame.image.load('data/dave_front.png')
         self.front_standing = self.image
-
+        self.direction = 'left'
         self.rect = pygame.rect.Rect(location, self.image.get_size())
         self.resting = False
         self.walking = False
@@ -125,7 +130,7 @@ class Player(pygame.sprite.Sprite):
                 self.dy = 0
 
         if game.exit_door and game.tilemap.layers['triggers'].collide(new, 'exit'):
-                print "Good work! 9 more to go"
+                print("Good work! 9 more to go")
                 game.running = False
 
         game.tilemap.set_focus(new.x, new.y)
@@ -134,19 +139,19 @@ class Game(object):
     exit_door = False
     running = True
     score = 0
-    def main(self, screen):
-        clock = pygame.time.Clock()
 
-        background = pygame.image.load('data/background.png')
-
+    def __init__(self, screen):
+        self.screen = screen
+        self.clock = pygame.time.Clock()
+        self.background = pygame.image.load('data/background.png')
         self.tilemap = tmx.load('map.tmx', screen.get_size())
-
         self.sprites = tmx.SpriteLayer()
         start_cell = self.tilemap.layers['triggers'].find('player')[0]
         self.player = Player((start_cell.px, start_cell.py), self.sprites)
         self.tilemap.layers.append(self.sprites)
-
         self.items = tmx.SpriteLayer()
+
+    def start(self):
         for item in self.tilemap.layers['triggers'].find('items'):
             item_value = item['items']
             if 'diamond' in item_value:
@@ -160,7 +165,7 @@ class Game(object):
         self.tilemap.layers.append(self.items)
 
         while self.running:
-            dt = clock.tick(30)
+            dt = self.clock.tick(30)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -169,12 +174,13 @@ class Game(object):
                     return
 
             self.tilemap.update(dt / 1000., self)
-            screen.blit(background, (0, 0))
+            self.screen.blit(self.background, (0, 0))
             self.tilemap.draw(screen)
             pygame.display.flip()
 
 if __name__ == '__main__':
     pygame.init()
     screen = pygame.display.set_mode((640, 480))
-    Game().main(screen)
+    game = Game(screen)
+    game.start()
 
