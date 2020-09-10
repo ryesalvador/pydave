@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="32" tileheight="32" nextobjectid="134">
+ <tileset firstgid="1" name="Ddave-tileset-vga" tilewidth="32" tileheight="32" tilecount="30">
+  <image source="data/Ddave-tileset-vga.png" width="160" height="192"/>
+ </tileset>
+ <tileset firstgid="31" name="triggers" tilewidth="32" tileheight="32" tilecount="6">
+  <image source="data/triggers.png" width="192" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="player" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="exit" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="items" value="yes"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="set" width="20" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAuEKIiFobS1HIXrc1DN5sUPi3dR4m7YHx6xQd6GsAnh6wG2TwBEtzATIT7qJmeqQ0ApFYGBg==
+  </data>
+ </layer>
+ <objectgroup color="#ff0000" name="triggers" visible="0">
+  <object id="2" x="32" y="32" width="544" height="32">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="3" x="576" y="64" width="32" height="256">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="4" x="32" y="320" width="544" height="32">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="5" x="352" y="256" width="192" height="32">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="6" x="352" y="288" width="32" height="32">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="7" x="128" y="256" width="128" height="32">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="8" x="160" y="192" width="32" height="32">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="9" x="0" y="64" width="32" height="256">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="10" x="32" y="288" width="32" height="32">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="11" x="32" y="192" width="32" height="32">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="12" x="96" y="128" width="32" height="32">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="13" x="224" y="128" width="32" height="32">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="14" x="288" y="192" width="32" height="32">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="15" x="352" y="128" width="32" height="32">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="16" x="480" y="128" width="32" height="32">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="17" x="416" y="192" width="32" height="32">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="18" x="544" y="192" width="32" height="32">
+   <properties>
+    <property name="blockers" value=""/>
+   </properties>
+  </object>
+  <object id="118" gid="33" x="384" y="320" width="32" height="32"/>
+  <object id="119" gid="34" x="32" y="256" width="32" height="32">
+   <properties>
+    <property name="items" value="diamond"/>
+   </properties>
+  </object>
+  <object id="120" gid="34" x="32" y="192" width="32" height="32">
+   <properties>
+    <property name="items" value="diamond"/>
+   </properties>
+  </object>
+  <object id="121" gid="34" x="96" y="128" width="32" height="32">
+   <properties>
+    <property name="items" value="diamond"/>
+   </properties>
+  </object>
+  <object id="122" gid="34" x="32" y="96" width="32" height="32">
+   <properties>
+    <property name="items" value="pearl"/>
+   </properties>
+  </object>
+  <object id="123" gid="34" x="160" y="192" width="32" height="32">
+   <properties>
+    <property name="items" value="diamond"/>
+   </properties>
+  </object>
+  <object id="124" gid="34" x="224" y="128" width="32" height="32">
+   <properties>
+    <property name="items" value="diamond"/>
+   </properties>
+  </object>
+  <object id="125" gid="34" x="224" y="256" width="32" height="32">
+   <properties>
+    <property name="items" value="diamond"/>
+   </properties>
+  </object>
+  <object id="126" gid="34" x="288" y="192" width="32" height="32">
+   <properties>
+    <property name="items" value="diamond"/>
+   </properties>
+  </object>
+  <object id="127" gid="34" x="352" y="128" width="32" height="32">
+   <properties>
+    <property name="items" value="trophy"/>
+   </properties>
+  </object>
+  <object id="128" gid="34" x="416" y="192" width="32" height="32">
+   <properties>
+    <property name="items" value="diamond"/>
+   </properties>
+  </object>
+  <object id="129" gid="34" x="480" y="128" width="32" height="32">
+   <properties>
+    <property name="items" value="diamond"/>
+   </properties>
+  </object>
+  <object id="130" gid="34" x="544" y="192" width="32" height="32">
+   <properties>
+    <property name="items" value="diamond"/>
+   </properties>
+  </object>
+  <object id="131" gid="34" x="544" y="96" width="32" height="32">
+   <properties>
+    <property name="items" value="ruby"/>
+   </properties>
+  </object>
+  <object id="133" gid="31" x="64" y="288" width="32" height="32"/>
+ </objectgroup>
+</map>
